@@ -24,12 +24,28 @@ public class AluguelService {
 	
 	public Aluguel inserir(Aluguel aluguel) {
 		aluguel.setDataCadastro(new Date());
+		aluguel.setStatusPagamento("Pendente");
+		aluguel.setStatusDevolucao("Dentro do Prazo");
 		return aluguelRepository.saveAndFlush(aluguel);
 	}
 	
 	public Aluguel alterar(Aluguel aluguel) {
 		aluguel.setDataCadastro(new Date());
+		aluguel.setStatusPagamento("Pendente");
+		aluguel.setStatusDevolucao("Dentro do Prazo");
 		return aluguelRepository.saveAndFlush(aluguel);
+	}
+	
+	public void confirmarPagamento(Long id) {
+		Aluguel aluguel = aluguelRepository.findById(id).get();
+		aluguel.setStatusPagamento("Confirmado");
+		aluguelRepository.saveAndFlush(aluguel);
+	}
+	
+	public void confirmarDevolucao(Long id) {
+		Aluguel aluguel = aluguelRepository.findById(id).get();
+		aluguel.setStatusDevolucao("Devolvido");
+		aluguelRepository.saveAndFlush(aluguel);
 	}
 	
 	public void excluir(Long id) {

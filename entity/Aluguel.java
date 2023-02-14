@@ -37,8 +37,9 @@ public class Aluguel {
 	
 	private Date dataRetirada;
 	private Date dataDevolucao;
-	
 	private String statusDevolucao;
+	private Double valorAluguel;
+	private String statusPagamento;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataCadastro;
