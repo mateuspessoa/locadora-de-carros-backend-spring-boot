@@ -35,8 +35,12 @@ public class Aluguel {
 	@JoinColumn(name = "idVeiculo")
 	private Veiculo veiculo;
 	
+	@Temporal(TemporalType.DATE)
 	private Date dataRetirada;
+	
+	@Temporal(TemporalType.DATE)
 	private Date dataDevolucao;
+	
 	private String statusDevolucao;
 	private Double valorAluguel;
 	private String statusPagamento;
