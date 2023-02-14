@@ -27,8 +27,20 @@ public class VeiculoService {
 	
 	public Veiculo alterar(Veiculo veiculo) {
 		veiculo.setDataCadastro(new Date());
-		veiculo.setStatus("disponível");
+		veiculo.setStatus("Disponível");
 		return veiculoRepository.saveAndFlush(veiculo);
+	}
+	
+	public void tornarDisponível(Long id) {
+		Veiculo veiculo = veiculoRepository.findById(id).get();
+		veiculo.setStatus("Disponível");
+		veiculoRepository.saveAndFlush(veiculo);
+	}
+	
+	public void tornarIndisponível(Long id) {
+		Veiculo veiculo = veiculoRepository.findById(id).get();
+		veiculo.setStatus("Indisponível");
+		veiculoRepository.saveAndFlush(veiculo);
 	}
 	
 	public void excluir(Long id) {

@@ -42,6 +42,20 @@ public class VeiculoController {
 		return veiculoService.alterar(veiculo);
 	}
 	
+	@PostMapping("/tornardisponivel/{id}")
+	@CrossOrigin("http://localhost:3000")
+	public ResponseEntity<Void> tornarDisponivel(@PathVariable("id") Long id) {
+		veiculoService.tornarDisponível(id);
+		return ResponseEntity.ok().build();
+	}
+	
+	@PostMapping("/tornarindisponivel/{id}")
+	@CrossOrigin("http://localhost:3000")
+	public ResponseEntity<Void> tornarIndisponivel(@PathVariable("id") Long id) {
+		veiculoService.tornarIndisponível(id);
+		return ResponseEntity.ok().build();
+	}
+	
 	@DeleteMapping("/{id}")
 	@CrossOrigin("http://localhost:3000")
 	public ResponseEntity<Void> excluir(@PathVariable("id") Long id) {

@@ -31,7 +31,11 @@ public class AluguelService {
 	
 	public Aluguel alterar(Aluguel aluguel) {
 		aluguel.setDataCadastro(new Date());
-		aluguel.setStatusPagamento("Pendente");
+		if(aluguel.getStatusPagamento() == "Confirmado") {
+			aluguel.setStatusPagamento("Confirmado");
+		}else {
+			aluguel.setStatusPagamento("Pendente");
+		}
 		aluguel.setStatusDevolucao("Dentro do Prazo");
 		return aluguelRepository.saveAndFlush(aluguel);
 	}
